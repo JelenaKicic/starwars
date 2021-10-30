@@ -8,3 +8,13 @@ exports.getClimateById = async (id) => {
         }
     })
 }
+
+exports.getAllClimates = async (req, res) => {
+    try {
+        const climates = await Climate.findAll();
+        
+        res.status(200).send(climates);
+    } catch(err) {
+        res.status(500).send({ message: err.message });
+    }
+}
