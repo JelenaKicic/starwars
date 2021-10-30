@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Planet.Climate = Planet.belongsTo(models.Climate, {foreignKey: {name: "climateId", allowNull: false}});
       Planet.Character = Planet.hasMany(models.Character, {foreignKey: "planetId"});
+      Planet.PlanetClimate = Planet.hasMany(models.PlanetClimate, {foreignKey: "planetId"});
     }
   };
   Planet.init({
@@ -24,16 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       allowNull: false,
       type: Sequelize.STRING
-    },
-    climateId: {
-      allowNull: false,
-      references: {
-        model: {
-          tableName: 'Climates',
-        },
-        key: 'id'
-      },
-      type: DataTypes.INTEGER
     }
   }, {
     sequelize,

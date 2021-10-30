@@ -1,8 +1,8 @@
 'use strict';
 const {
   Model
-} = require('DataTypes');
-module.exports = (DataTypes, DataTypes) => {
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
   class Character extends Model {
     /**
      * Helper method for defining associations.
@@ -10,8 +10,8 @@ module.exports = (DataTypes, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Character.Movie = Character.belongsTo(models.Movie, {foreignKey: {name: "movieId", allowNull: false}});
       Character.Planet = Character.belongsTo(models.Planet, {foreignKey: {name: "planetId", allowNull: false}});
+      Character.MovieCharacter = Character.hasMany(models.MovieCharacter, {foreignKey: "characterId"});
     }
   };
   Character.init({
@@ -41,16 +41,6 @@ module.exports = (DataTypes, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    movieId: {
-      allowNull: false,
-      references: {
-        model: {
-          tableName: 'Movies',
-        },
-        key: 'id'
-      },
-      type: DataTypes.INTEGER
-    },
     planetId: {
       allowNull: false,
       references: {
@@ -62,7 +52,7 @@ module.exports = (DataTypes, DataTypes) => {
     }
   }, 
   {
-    DataTypes,
+    sequelize,
     modelName: 'Character',
   });
   return Character;

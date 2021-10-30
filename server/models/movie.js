@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Movie.Character = Movie.hasMany(models.Character, {foreignKey: "movieId"});
+      Movie.MovieCharacter = Movie.hasMany(models.MovieCharacter, {foreignKey: "movieId"});
     }
   };
   Movie.init({

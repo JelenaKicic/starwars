@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Climate.Planet = Climate.hasMany(models.Planet, {foreignKey: "climateId"});
+      Climate.PlanetClimate = Climate.hasMany(models.PlanetClimate, {foreignKey: "climateId"});
     }
   };
   Climate.init({

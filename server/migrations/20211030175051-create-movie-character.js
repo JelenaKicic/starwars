@@ -1,38 +1,28 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Characters', {
+    await queryInterface.createTable('MovieCharacters', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      gender: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      age: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      height: {
-        allowNull: false,
-        type: Sequelize.DECIMAL
-      },
-      hairColor: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      planetId: {
+      characterId: {
         allowNull: false,
         references: {
           model: {
-            tableName: 'Planets',
+            tableName: 'Characters',
+          },
+          key: 'id'
+        },
+        type: Sequelize.INTEGER
+      },
+      movieId: {
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'Movies',
           },
           key: 'id'
         },
@@ -49,6 +39,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Characters');
+    await queryInterface.dropTable('MovieCharacters');
   }
 };

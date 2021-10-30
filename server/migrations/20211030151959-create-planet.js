@@ -12,16 +12,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      climateId: {
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'Climates',
-          },
-          key: 'id'
-        },
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
