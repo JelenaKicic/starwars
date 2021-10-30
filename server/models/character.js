@@ -49,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         key: 'id'
       },
+      type: DataTypes.INTEGER
     }
   }, 
   {
