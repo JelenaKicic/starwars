@@ -8,3 +8,13 @@ exports.getMovieById = async (id) => {
         }
     })
 }
+
+exports.getAllMovies = async (req, res) => {
+    try {
+        const movies = await Movie.findAll();
+        
+        res.status(200).send(movies);
+    } catch(err) {
+        res.status(500).send({ message: err.message });
+    }
+}
