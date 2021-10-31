@@ -1,1 +1,1 @@
-# starwars
+# starwars   npm install -g expo-cli
