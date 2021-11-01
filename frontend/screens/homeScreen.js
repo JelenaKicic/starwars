@@ -70,9 +70,13 @@ const HomeScreen = ({ navigation }) => {
               data={climates}
               keyExtractor={({ id }, index) => id}
               renderItem={({ item }) => (
-                <View style={[styles.item, styles.climateItem]}>
-                    <Text style={styles.title}>{item.type}</Text>
-                </View>
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('Planets', {climateId: item.id, climateType: item.type})}
+                > 
+                    <View style={[styles.item, styles.climateItem]}>
+                        <Text style={styles.title}>{item.type}</Text>
+                    </View>
+                </TouchableOpacity>
               )}
             />
           }
