@@ -60,9 +60,13 @@ const HomeScreen = ({ navigation }) => {
               data={movies}
               keyExtractor={({ id }, index) => id}
               renderItem={({ item }) => (
-                <View style={[styles.item, styles.movieItem]}>
-                    <Text style={styles.title}>{item.name}</Text>
-                </View>
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('Characters', {movieId: item.id, movieName: item.name})}
+                > 
+                    <View style={[styles.item, styles.movieItem]}>
+                        <Text style={styles.title}>{item.name}</Text>
+                    </View>
+                </TouchableOpacity>
               )}
             />
             :
