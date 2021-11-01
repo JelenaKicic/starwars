@@ -46,12 +46,12 @@ exports.getMovieCharacters = async (req, res) => {
             }],
             where: whereParams,
             order: orderParams,
-            offset: (req.query.offset | 0),
-            limit: (req.query.limit | 30)
+            offset: req.query.offset,
+            limit: req.query.limit
         });
         
         res.status(200).send({
-            offset: (req.query.offset | 0),
+            offset: req.query.offset,
             ...characters
         });
     } catch(err) {
